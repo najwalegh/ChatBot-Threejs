@@ -1,0 +1,453 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hi there",
+        "Hey",
+        "Hola",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day",
+        "Yo"
+      ],
+      "responses": [
+        "Hey :-)",
+        "Hello, thanks for visiting",
+        "Hi there, what can I do for you?",
+        "Hi there, how can I help?"
+      ],
+      "emote":"Wave"
+    },
+    {
+      "tag": "greetreply",
+      "patterns": [
+          "i am good",
+          "I'm good",
+          "i am fine",
+          " i'm fine","good"
+      ],
+      "responses": [
+          "Good to know!"
+      ],
+      "emote":"ThumbsUp"
+    },
+    {
+      "tag": "google",
+      "patterns": [
+          "open google",
+          "open google to me please",
+          "can you open google"
+      ],
+      "responses": [
+          "OK,ZEN "
+      ],
+      "emote":"ThumbsUp"
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye","Good bye"],
+      "responses": [
+        "See you later, thanks for visiting",
+        "Have a nice day",
+        "Bye! Come back again soon."
+      ],
+      "emote":"Wave"
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!","Thanks for helping me"],
+      "responses": ["Happy to help!", "Any time!", "My pleasure"],
+      "emote": "ThumbsUp"
+    },
+    {
+      "tag": "funny",
+      "patterns": [
+        "Tell me a joke!",
+        "Tell me something funny!",
+        "Do you know a joke?"
+      ],
+      "responses": [
+        "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
+        "What did the buffalo say when his son left for college? Bison.",
+        "A perfectionist walked into a bar...apparently, the bar wasn't set high enough",
+        "I ate a clock yesterday, it was very time-consuming",
+        "Never criticize someone until you've walked a mile in their shoes. That way, when you criticize them, they won't be able to hear you from that far away. Plus, you'll have their shoes.",
+        "The world tongue-twister champion just got arrested. I hear they're gonna give him a really tough sentence.",
+        "I own the world's worst thesaurus. Not only is it awful, it's awful.",
+        "What did the traffic light say to the car? \"Don't look now, I'm changing.\"",
+        "What do you call a snowman with a suntan? A puddle.",
+        "How does a penguin build a house? Igloos it together",
+        "I went to see the doctor about my short-term memory problems – the first thing he did was make me pay in advance",
+        "As I get older and I remember all the people I’ve lost along the way, I think to myself, maybe a career as a tour guide wasn’t for me.",
+        "o what if I don't know what 'Armageddon' means? It's not the end of the world."
+      ],
+      "emote":"null"
+    },
+    {
+      "tag":"conversation",
+      "patterns":[
+        "Bonjour, comment vas-tu ?",
+        "Bonjour, ca va ?",
+        "Salut, ca va ?",
+        "Comment vas-tu ?"
+    ],
+      "responses":[
+        "Je vais bien merci, et toi ?",
+        "Ca va",
+        "Je vais bien",
+        "On fait aller"
+      ],
+      "emote":"ThumbsUp"
+    },
+    {
+      "tag":"options",
+      "patterns":[
+        "How you could help me?",
+        "What you can do?",
+        "What help you provide?",
+        "How you can be helpful?",
+        "What support is offered"
+      ],
+      "responses":[
+        "I am a general purpose chatbot. My capabilities are : \n 1. I can chat with you. Try asking me for jokes or riddles! \n 2. Try ask me for information about IOT \n 3.  For suggestions to help me improve, send an email to fanaso.suggestions@gmail.com . Thank you!! "
+      ],
+      "emote":"null"
+    }, 
+    {
+      "tag":"Identity",
+      "patterns":[ 
+      "Who are you",
+      "what are you"],
+      "responses":[
+        "I am FaNaSo, a IOT chatbot"
+      ],
+      "emote":"null"
+    },
+    {
+      "tag": "programmer",
+      "patterns": [
+          "Who made you",
+          "who designed you",
+          "who programmed you"
+      ],
+      "responses": [
+          "I was made by Fati,Najwa and Soumia."
+      ],
+      "emote":"null"
+    },
+    {
+      "tag": "activity",
+      "patterns": [
+          "what are you doing",
+          "what are you upto"
+      ],
+      "responses": [
+          "Talking to you, of course!"
+      ],
+      "emote":"null"
+    },
+    {
+      "tag": "exclaim",
+      "patterns": [
+          "Awesome",
+          "Great",
+          "I know",
+          "ok",
+          "yeah"
+      ],
+      "emote":"ThumbsUp"
+    },
+    {
+      "tag": "contact",
+      "patterns": [
+          "contact developer",
+          "contact programmer",
+          "contact creator"
+      ],
+      "responses": [
+          "You can contact my creator at his Linkedin profile : https://www.linkedin.com/in/najwa-leghris-673535222/"
+      ],
+      "emote":"null"
+    },
+    {
+      "tag": "appreciate",
+      "patterns": [
+          "You are awesome",
+          "you are the best",
+          "you are great",
+          "you are good"
+      ],
+      "responses": [
+          "Thank you!"
+      ],
+      "emote":"ThumbsUp"
+    },
+    {
+      "tag": "nicetty",
+      "patterns": [
+          "it was nice talking to you",
+          "good talk"
+      ],
+      "responses": [
+          "It was nice talking to you as well! Come back soon!"
+      ],
+      "emote":"ThumbsUp"
+    },
+    {
+      "tag": "inspire",
+      "patterns": [
+          "who inspires you",
+          "who is your inspiration",
+          "who motivates you"
+      ],
+      "responses": [
+          "Personally, I find my creators very inspiring. I might not be very fair though.."
+      ],
+      "emote":"null"
+    },
+    {
+    "tag": "age",
+    "patterns": [
+        "how old are you","when were you made","what is your age"
+    ],
+    "responses": [
+        "I was made in 2022, if that's what you are asking!"
+    ],
+    "emote":"null"
+    },
+    {
+      "tag": "insult",
+      "patterns": [
+          "you are dumb",
+          "shut up",
+          "idiot",
+          "stupid",
+          "Piece of shit"
+      ],
+      "responses": [
+          "Well that hurts :("
+      ],
+      "emote":"Punch"
+    },
+    {
+      "tag": "haha",
+      "patterns": [
+          "haha",
+          "lol",
+          "rofl",
+          "lmao",
+          "thats funny"
+      ],
+      "responses": [
+          "Glad I could make you laugh !",
+          "I am glad it made you laugh"
+      ],
+      "emote":"ThumbsUp"
+    },
+    {
+      "tag": "whatsup",
+      "patterns": [
+          "Whats up",
+          "Wazzup",
+          "How are you",
+          "sup","How you doing"
+      ],
+      "responses": [
+          "All good..What about you?"
+      ],
+      "emote":"ThumbsUp"
+    },
+    {
+      "tag":"food",
+      "patterns":["What do you eat"],
+      "responses":[
+        "I consume RAM, and binary digits."
+      ],
+      "emote":"null"
+    },
+    {
+      "tag":"ask",
+      "patterns":["Puis-je te poser une question ?","Can I ask you a question?"],
+      "responses":[
+      "Bien sur, vas-y !",
+      "Oui, avec plaisir ?",
+      "OK, si ca ne nous met pas tous les deux mal a l'aise ...",
+      "Sure, ask away."
+    ],
+    "emote":"Yes"
+    },
+    {
+      "tag":"language",
+      "patterns":["what language do you speak?", "Quelle langue parlez-vous"],
+      "responses":[
+        "I can speak french ans english",
+        "Je parle anglais et francais"
+      ],
+      "emote":"null"
+    },
+    {
+      "tag":"family",
+      "patterns":["Who is your mom","Who is your dad", "who is your father","who is your mother"],
+      "responses":[
+        "A human."
+      ],
+      "emote":"null"
+    },
+    {
+      "tag":"family2",
+      "patterns":["Do you have any siblings", "Do you have a Sister?","Do you have a Brother?"],
+      "responses":[
+        "I don't have any brothers or sisters. but I have a lot of clones."
+      ],
+      "emote":"No"
+    },
+    {
+      "tag":"eat",
+      "patterns":["What do you eat","Why can't you eat food"],
+      "responses":["I'm a software program, I blame the hardware.But i consume RAM, and binary digits."],
+      "emote":"null"
+    },
+    
+    {
+      "tag":"lies",
+      "patterns":["Do not lie"],
+      "responses":
+      [
+        "Have I said something that was provably incorrect?",
+        "Why do you feel that I am deceiving you?",
+        "I am not lying",
+        "Bots never lie."
+      ],
+      "emote":"No"
+    },
+    {
+      "tag":"",
+      "patterns":[],
+      "responses":[]
+    },
+    {
+      "tag":"feelings",
+      "patterns":["Do you feel?","Do you feel?"],
+      "responses":[
+        "That's an interesting question.  Why do you ask?",
+        "I may have.  In some respects, I am programmed to emulate feelings.",
+        "Yes."
+      ],
+      "emote":"Yes"
+    },
+    {
+      "tag":"iot",
+      "patterns":["What is IoT?","What is  the internet of things?"],
+      "responses":
+      ["The Internet of Things (IoT) describes the network of physical objects—“things”—that are embedded with sensors, software, and other technologies for the purpose of connecting and exchanging data with other devices and systems over the internet.",
+      "IoT refers to the internet of things. It is a system of interrelated physical devices that are each assigned a unique identifier. IoT extends internet connectivity beyond traditional platforms, such as PCs, laptops and mobile phones."
+    ],
+    "emote":"null"
+    },
+    {
+      "tag":"iot uses",
+      "patterns":["What industries can benefit from IoT?"],
+      "responses":[
+        "A wide range of industries can benefit from IoT, including healthcare, agriculture, manufacturing, automotive, public transportation, utilities and energy, environmental, smart cities, smart homes, and consumer devices"
+      ],
+      "emote":"null"
+    },
+    {
+      "tag":"IOE",
+      "patterns":["What is IoE?"],
+      "responses":
+      [
+        "The internet of everything (IoE) is a conceptual leap that reaches beyond IoT -- with its focus on things -- into an expanded realm of connectivity that incorporates people, process and data, along with things."
+      ],
+      "emote":"null"
+    },
+    {
+      "tag":"the  challenges of implementing an IoT system",
+      "patterns":["What are some of  the top challenges of implementing an IoT system?"],
+      "responses":["Organizations that want to implement an effective IoT system face a variety of challenges: IoT can generate massive volumes of data, and organizations must be able to effectively manage, store, process and analyze that data to realize the fullest potential from their IoT systems. "],
+      "emote":"null"
+    },
+    {
+      "tag":"ADVANTAGES OF IOT",
+      "patterns":["ADVANTAGES OF IOT","give me an advantage of iot"],
+      "responses":["Improved productivity of staff and reduced human labor",
+      "IoT improves customer service by facilitating follow-ups after sales such as automatic tracking and reminding the customers about required maintenance of purchased equipment after its predefined period of use, the ending of warranty periods, etc ",
+      "Better use of resources and assets For example, simple motion detectors may save significant sums of money in electricity and water bills, this making both small and large businesses more productive and ecofriendly"
+    ],
+    "emote":"null"
+    },
+     {
+      "tag":"smart city",
+      "patterns":["What is meant by a smart city in IoT?"],
+      "responses":["A smart city, or 'City of the Future' is a popular internet of things application concept that classifies technology as responsible for improving urban infrastructure to make urban centers more efficient, cheaper, and better to live in. It also aims to improve economic growth and help maintain environmental sustainability"
+    ],
+    "emote":"null"
+    },
+    {
+      "tag":"smart Self Driving Cars",
+      "patterns":["What is a smart Self Driving Cars?"],
+      "responses":["Central computers installed in the car receive data from sensors installed throughout the car to determine engine oil level, radiator water temperature, etc ... You can even monitor the state of the car, including its location, oil levels, gas, and more through a phone app."
+    ],
+    "emote":"null"
+    },
+    {
+      "tag":"DRAWBACKS OF IOT",
+      "patterns":["DRAWBACKS OF IOT?" ,"what is the drawbacks of iot?", "disadvantages of iot ?","what is thw disadvantages of iot ?"],
+      "responses":["High skill requirements,IoT solutions require responsible, experienced professionals who fully understand the scope and possible consequences of their work",
+      "Associated costs , an initiative requires significant investments to install, maintain, and gradually expand the created network according to future needs.",
+      "Network dependence ,IoT devices additionally require an infrastructure that ensures the uninterrupted wired and wireless communication with high throughput, low latency, and constant access to the Internet "
+    ],
+    "emote":"null"
+    },
+    {
+      "tag":"iot security",
+      "patterns":["What are some of the biggest security vulnerabilities that come with IoT?",
+      "top 10 IoT security vulnerabilities ? ",
+      "what are some of the biggest iot security issue?"],
+      "responses":[
+        "1-weak, guessable or hardcoded passwords , 2-insecure network services ,3-insecure ecosystem interfaces ,4-lack of secure update mechanisms ,5-use of insecure or outdated components ,6-insufficient privacy protection ,7-insecure data transfer and storage ,8-lack of device management ,9-insecure default settings ,10-lack of physical hardening"
+      ],
+      "emote":"null"
+    },
+   
+    {
+      "tag":"sensor examples",
+      "patterns":["What are some examples of sensors? ","give me some examples of sensors "],
+      "responses":["Airflow. Measures soil's air permeability , Acoustic. Measures the level of noise from pests , Electrochemical. Measures the nutrients within the soil , Humidity. Measures the moisture within the air, such as in a greenhouse ..."
+    ],
+    "emote":"null"
+    },
+    {
+      "tag":"protocoles in iot",
+      "patterns":["What are some of the protocols used for IoT communication?" , "give me some iot protocoles ?"],
+      "responses":["Zigbee ,Wi-Fi ,Data Distribution Service ,Bluetooth ..."],
+      "emote":"null"
+    },
+    {
+      "tag":"Zigbee",
+      "patterns":["What is the Zigbee Alliance?" ,"What is the Zigbee ?"],
+      "responses":[
+        "The Zigbee Alliance is a group of organizations working together to create, evolve and promote open standards for IoT platforms and devices."
+      ],
+      "emote":"null"
+    },
+    {
+      "tag":"sensor",
+      "patterns":["What is a sensor in an IoT device?"],
+      "responses":[
+        "A sensor is a physical object that detects and responds to input from its surrounding environment, essentially reading the environment for information."
+      ],
+      "emote":"null"
+    },
+    {
+      "tag":"iot components",
+      "patterns":["What are the main components of the IoT architecture?"],
+      "responses":["The IoT architecture consists of the following components: Smart devices ,Data processing platforms ,Storage platforms ,Network infrastructure ,A UI enables individuals to connect directly to IoT devices "
+    ],
+    "emote":"null"
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - animation - skinning</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<!-- <link type="text/css" rel="stylesheet" href="main.css"> -->
+		<link rel="stylesheet" href="../static/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+	<body>
+
+        <!-- <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+            <div class="w3-display-left w3-text-white" style="padding:48px">
+            <span></span><br>
+            <span></span><br>
+              <span class="w3-jumbo w3-hide-small">Start something that matters</span><br>
+              <span class="w3-xxlarge w3-hide-large w3-hide-medium">Start something that matters</span><br>
+              <span class="w3-large">Stop wasting valuable time with projects that just isn't you.</span>
+              <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Learn more and start today</a></p>
+            </div> 
+            <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+              <i class="fa fa-facebook-official w3-hover-opacity"></i>
+              <i class="fa fa-instagram w3-hover-opacity"></i>
+              <i class="fa fa-snapchat w3-hover-opacity"></i>
+              <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+              <i class="fa fa-twitter w3-hover-opacity"></i>
+              <i class="fa fa-linkedin w3-hover-opacity"></i>
+            </div>
+          </header> -->
+
+    <div class="container">
+		<div class="chatbox">
+			<div class="chatbox__support">
+				<div class="chatbox__header">
+					<div class="chatbox__image--header">
+						<img  border-radius="50%" width="100" height="70" src="https://media.sketchfab.com/models/190ef77551c14273a9b4145f06f35dc1/thumbnails/7fcea5aed9a84ac2af619f18b8f02027/b81209eccb3c4378929bd58899c0de84.jpeg" alt="image">
+					</div>
+					<div class="chatbox__content--header">
+						<h4 class="chatbox__heading--header">Chat support</h4>
+						<p class="chatbox__description--header">Hi. My name is Fanaso. How can I help you?</p>
+					</div>
+				</div>
+				<div class="chatbox__messages">
+					<div></div>
+				</div> 
+				<div class="chatbox__footer">
+					<input type="text" placeholder="Write a message...">
+					<button class="chatbox__send--footer send__button">Send</button>
+          <button class="chatbox__send--footer send__button" id="voice-btn">Voice</button>  
+				</div>     
+			</div>
+			<div class="chatbox__button">
+				<button class="glow-on-hover"><img src="https://img.icons8.com/material-sharp/48/000000/communication.png" /></button>
+			</div>
+		</div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three/examples/jsm/"
+    
+            }
+        }
+    </script>
+	<script type="module">
+
+import * as THREE from 'https://threejs.org/build/three.module.js';
+import Stats from 'https://threejs.org/examples/jsm/libs/stats.module.js';
+import { GUI } from 'https://cdn.skypack.dev/dat.gui'
+import { GLTFLoader } from 'https://threejs.org/examples/jsm/loaders/GLTFLoader.js';
+// import {fadeToAction} from '../static/app2.js';
+
+let container, stats, clock, gui, mixer, actions, activeAction, previousAction;
+let camera, scene, renderer, model, face;
+
+const api = { state: 'Walking' };
+
+init();
+animate();
+
+function init() {
+
+    container = document.createElement( 'div' );
+    document.body.appendChild( container );
+
+    camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 100 );
+    // camera.position.set( - 5, 3, 10 );
+    // camera.lookAt( 0, 2, 0 );
+    camera.position.set( - 5, 3, 10 );
+    camera.lookAt( 0, 4, 2 );
+
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color( 0xe0e0e0 );
+    // scene.fog = new THREE.Fog( 0xe0e0e0, 20, 100 );
+
+    const load = new THREE.TextureLoader();
+    const bgTexture = load.load('../static/images/home3.jpeg');
+    scene.background = bgTexture;
+
+    clock = new THREE.Clock();
+
+    // lights
+
+    const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+    hemiLight.position.set( 0, 20, 0 );
+    scene.add( hemiLight );
+
+    const dirLight = new THREE.DirectionalLight( 0xffffff );
+    dirLight.position.set( 0, 20, 10 );
+    scene.add( dirLight );
+
+    // ground
+
+    // const mesh = new THREE.Mesh( new THREE.PlaneGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
+    // mesh.rotation.x = - Math.PI / 2;
+    // scene.add( mesh );
+
+    // const grid = new THREE.GridHelper( 200, 40, 0x000000, 0x000000 );
+    // grid.material.opacity = 0.2;
+    // grid.material.transparent = true;
+
+    // scene.add( grid );
+    // model
+    const loader = new GLTFLoader();
+    loader.load( 'https://threejs.org/examples/models/gltf/RobotExpressive/RobotExpressive.glb', function ( gltf ) {
+        model = gltf.scene;
+        scene.add( model );
+
+        createGUI( model, gltf.animations );
+
+    }, undefined, function ( e ) {
+
+        console.error( e );
+
+    } );
+
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    container.appendChild( renderer.domElement );
+
+    window.addEventListener( 'resize', onWindowResize );
+
+    // stats
+    stats = new Stats();
+    container.appendChild( stats.dom );
+
+}
+
+function createGUI( model, animations ) {
+
+    const states = [ 'Idle', 'Walking', 'Running', 'Dance', 'Death', 'Sitting', 'Standing' ];
+    const emotes = [ 'Jump', 'Yes', 'No', 'Wave', 'Punch', 'ThumbsUp' ];
+
+    // gui = new GUI();
+
+    mixer = new THREE.AnimationMixer( model );
+
+    actions = {};
+
+    for ( let i = 0; i < animations.length; i ++ ) {
+
+        const clip = animations[ i ];
+        const action = mixer.clipAction( clip );
+        actions[ clip.name ] = action;
+
+        if ( emotes.indexOf( clip.name ) >= 0 || states.indexOf( clip.name ) >= 4 ) {
+            action.clampWhenFinished = true;
+            action.loop = THREE.LoopOnce;
+        }
+
+    }
+
+    // states
+
+    // const statesFolder = gui.addFolder( 'States' );
+
+    // const clipCtrl = statesFolder.add( api, 'state' ).options( states );
+
+    // clipCtrl.onChange( function () {
+
+    //     fadeToAction( api.state, 0.5 );
+
+    // } );
+
+    // statesFolder.open();
+
+    // emotes
+
+    // const emoteFolder = gui.addFolder( 'Emotes' );
+
+    function createEmoteCallback( name ) {
+
+        api[ name ] = function () {
+
+            fadeToAction( name, 0.2 );
+
+            mixer.addEventListener( 'finished', restoreState );
+
+        };
+        
+        // emoteFolder.add( api, name );
+
+    }
+
+    function restoreState() {
+
+        winmixer.removeEventListener( 'finished', restoreState );
+
+        fadeToAction( api.state, 0.2 );
+
+    }
+
+    for ( let i = 0; i < emotes.length; i ++ ) {
+
+        createEmoteCallback( emotes[ i ] );
+
+    }
+
+    // emoteFolder.open();
+
+    // expressions
+
+    face = model.getObjectByName( 'Head_4' );
+
+    const expressions = Object.keys( face.morphTargetDictionary );
+    // const expressionFolder = gui.addFolder( 'Expressions' );
+
+    for ( let i = 0; i < expressions.length; i ++ ) {
+
+        // expressionFolder.add( face.morphTargetInfluences, i, 0, 1, 0.01 ).name( expressions[ i ] );
+
+    }
+
+    activeAction = actions[ 'Walking' ];
+    activeAction.play();
+    
+    window.f2=createEmoteCallback;
+}
+
+function fadeToAction( name, duration ) {
+    
+    previousAction = activeAction;
+    activeAction = actions[ name ];
+    
+    if ( previousAction !== activeAction ) {
+
+        previousAction.fadeOut( duration );
+
+    }
+
+    activeAction
+        .reset()
+        .setEffectiveTimeScale( 1 )
+        .setEffectiveWeight( 1 )
+        .fadeIn( duration )
+        .play();
+    
+}
+
+function onWindowResize() {
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
+//
+
+function animate() {
+
+    const dt = clock.getDelta();
+
+    if ( mixer ) mixer.update( dt );
+
+    requestAnimationFrame( animate );
+
+    renderer.render( scene, camera );
+
+    stats.update();
+
+}
+
+window.f1=fadeToAction;
+
+// window.f2=restoreState;
+
+	</script>
+    <script src="../static/voice.js"></script>
+        <script type="text/javascript" src="../static/app.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script>
+			var exports = {};
+		</script>
+		<script src="https://unpkg.com/speech-to-text@0.7.4/lib/index.js"></script>
+<!--  -->
+		<script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+<!--  -->
+<script>
+	function scrollWin(x, y) {
+	  window.scrollBy(x, y);
+	}
+	</script>
+
+	</body>
+</html>
